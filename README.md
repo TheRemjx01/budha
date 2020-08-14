@@ -9,4 +9,4 @@ $ budha summon
 
 So it would gen your budha like this image
 
-![Budha console](./public/images/simple_example.jpg)
+![Budha console](./public/images/simple_example.png)
