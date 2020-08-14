@@ -20,12 +20,33 @@
 =========================SAFETY FIRST=============================
 */
 
-const budha = '                        -\n                     _oo0oo_\n                    o8888888o\n                    88\" . \"88\n                    (| -_- |)\n                    0\\  =  /0\n                 ____/`---\'\\_____\n               .\'  \\\\|      //   `.\n              /   \\\\|||  :  |||//  \\\n             /   _||||| -:- |||||_  \\\n\t        |     | \\\\\\  -  /\'| |    |\n            |   \\_|  `|`---\'//  |_/  |\n            \\   .\\__  `-. -\'__/-.   /\n\t      ___`. .\'   /--.--\\   `. .\'___\n         .\"\" \'<  `.___\\_<|>_/___.\' _> \\\"\".\n        | | :  `- \\`. ;`. _/; .\'/ /  .\' ; |\n\t    \\  \\ `-.   \\_\\_`. _.\'_/_/  -\' _.\' /\n=========`-.`___`-.__\\ \\___  /__.-\'_.\'_.\'\'==============\n========================================================\n=====================SAFETY FIRST======================='
+const genLastLine = (message) => {
+	const defaultLastLine = '=========================SAFETY FIRST============================='
+	if (!message) {
+		return defaultLastLine
+	}
+	let appendSymbol = '='
+	let genMessage = message;
+	const messageLength = message.length;
+	const lineLength = 66
 
+	if (messageLength >= 66) {
+		genMessage = message.slice(0, 66)
+		return genMessage
+	}
 
-const budha2 = "                        -\n                     _oo0oo_\n                    o8888888o\n                    88\" . \"88\n                    (| -_- |)\n                    0\\  =  /0\n                 ____/`---\'\\_____\n               .\'  \\\\|      //   `.\n              /   \\\\|||  :  |||//  \\\n             /   _||||| -:- |||||_  \\\n\t        |     | \\\\\\  -  /\'| |    |\n            |   \\_|  `|`---\'//  |_/  |\n            \\   .\\__  `-. -\'__/-.   /\n\t      ___`. .\'   /--.--\\   `. .\'___\n         .\"\" \'<  `.___\\_<|>_/___.\' _> \\\"\".\n        | | :  `- \\`. ;`. _/; .\'/ /  .\' ; |\n\t    \\  \\ `-.   \\_\\_`. _.\'_/_/  -\' _.\' /\n=========`-.`___`-.__\\ \\___  /__.-\'_.\'_.\'\'==============\n========================================================\n=====================SAFETY FIRST======================="
+	let remainChar = lineLength - messageLength
+	let appendCount = Math.round(remainChar / 2)
+	let appendString = appendSymbol.repeat(appendCount)
+	genMessage = `${appendString}${genMessage}${appendString}`
 
-const budha3 = "" +
+	if (genMessage.length >= 66) {
+		genMessage = genMessage.slice(0, 66)
+	}
+	return genMessage
+}
+
+const budha3 = (message) => "" +
 	"===============================0==================================\r\n" +
 	"============================_oo0oo_===============================\r\n" +
 	"===========================o8888888o==============================\r\n" +
@@ -44,7 +65,9 @@ const budha3 = "" +
 	"=============|| :  `- \\`. ;`. _/; .'/ /  .' ; |===================\r\n" +
 	"=============\\  \\ `-.   \\_\\_`. _.'_/_/  -' _.' /==================\r\n" +
 	"==============`-.`___`-.__\\ \\___  /__.-'_.'_.''===================\r\n" +
-	"=========================SAFETY FIRST============================="
-const summonBudha = () => { console.log(budha3); }
+	genLastLine(message)
+
+
+const summonBudha = (message) => { return budha3(message) }
 
 module.exports = summonBudha
