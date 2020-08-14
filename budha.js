@@ -1,13 +1,18 @@
 #!/usr/bin/env node
+const handler = (argv) => {
+ const message = require('./summon/budha')(argv.message)
+ if (argv.console) {
+  console.log(message)
+ }
+ if (!argv.lang && ! argv.output) {
+  console.log(message)
+  return
+ }
+}
+
 const argv = require('yargs')
  .usage('Usage: $0')
- .command('summon', 'Summon the budha', () => {}, (argv) => {
-  const message = require('./summon/budha')(argv.message)
-  if (!argv.lang && ! argv.output) {
-   console.log(message)
-   return
-  }
- })
+ .command('summon', 'Summon the budha', () => {}, handler)
  .option('console', {
   alias: 'c',
   type: 'boolean',
